@@ -14,6 +14,8 @@
 		0E4342542016D7B4008125D1 /* bugModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4342532016D7B4008125D1 /* bugModel.m */; };
 		0E43425820172A1F008125D1 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E43425620172A1F008125D1 /* LoginVC.m */; };
 		0E43425920172A1F008125D1 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E43425720172A1F008125D1 /* LoginVC.xib */; };
+		0E4342BE20197037008125D1 /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4342BD20197037008125D1 /* ViewModel.m */; };
+		0E6F2D102019A63200A8E824 /* NSImage+ColorMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F2D0F2019A63200A8E824 /* NSImage+ColorMask.m */; };
 		0EF8BED81FF621F700EF02D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF8BED71FF621F700EF02D5 /* AppDelegate.m */; };
 		0EF8BEE31FF621F700EF02D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF8BEE21FF621F700EF02D5 /* main.m */; };
 /* End PBXBuildFile section */
@@ -30,7 +32,11 @@
 		0E43425520172A1F008125D1 /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		0E43425620172A1F008125D1 /* LoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		0E43425720172A1F008125D1 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
-		0EF8BED31FF621F700EF02D5 /* checkChanDao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checkChanDao.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E4342BC20197037008125D1 /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
+		0E4342BD20197037008125D1 /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
+		0E6F2D0E2019A63200A8E824 /* NSImage+ColorMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+ColorMask.h"; sourceTree = "<group>"; };
+		0E6F2D0F2019A63200A8E824 /* NSImage+ColorMask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+ColorMask.m"; sourceTree = "<group>"; };
+		0EF8BED31FF621F700EF02D5 /* zentao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zentao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF8BED61FF621F700EF02D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0EF8BED71FF621F700EF02D5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0EF8BEE11FF621F700EF02D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,7 +66,7 @@
 		0EF8BED41FF621F700EF02D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0EF8BED31FF621F700EF02D5 /* checkChanDao.app */,
+				0EF8BED31FF621F700EF02D5 /* zentao.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +78,8 @@
 				0EF8BED71FF621F700EF02D5 /* AppDelegate.m */,
 				0E4342472016CD03008125D1 /* Controller.h */,
 				0E4342482016CD03008125D1 /* Controller.m */,
+				0E4342BC20197037008125D1 /* ViewModel.h */,
+				0E4342BD20197037008125D1 /* ViewModel.m */,
 				0E43424D2016D092008125D1 /* PopOverVC.h */,
 				0E43424E2016D092008125D1 /* PopOverVC.m */,
 				0E43424F2016D092008125D1 /* PopOverVC.xib */,
@@ -84,6 +92,8 @@
 				0EF8BEE41FF621F700EF02D5 /* checkChanDao.entitlements */,
 				0E4342522016D7B4008125D1 /* bugModel.h */,
 				0E4342532016D7B4008125D1 /* bugModel.m */,
+				0E6F2D0E2019A63200A8E824 /* NSImage+ColorMask.h */,
+				0E6F2D0F2019A63200A8E824 /* NSImage+ColorMask.m */,
 			);
 			path = checkChanDao;
 			sourceTree = "<group>";
@@ -91,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0EF8BED21FF621F700EF02D5 /* checkChanDao */ = {
+		0EF8BED21FF621F700EF02D5 /* zentao */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0EF8BEE71FF621F700EF02D5 /* Build configuration list for PBXNativeTarget "checkChanDao" */;
+			buildConfigurationList = 0EF8BEE71FF621F700EF02D5 /* Build configuration list for PBXNativeTarget "zentao" */;
 			buildPhases = (
 				0EF8BECF1FF621F700EF02D5 /* Sources */,
 				0EF8BED01FF621F700EF02D5 /* Frameworks */,
@@ -103,9 +113,9 @@
 			);
 			dependencies = (
 			);
-			name = checkChanDao;
+			name = zentao;
 			productName = checkChanDao;
-			productReference = 0EF8BED31FF621F700EF02D5 /* checkChanDao.app */;
+			productReference = 0EF8BED31FF621F700EF02D5 /* zentao.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0EF8BED21FF621F700EF02D5 /* checkChanDao */,
+				0EF8BED21FF621F700EF02D5 /* zentao */,
 			);
 		};
 /* End PBXProject section */
@@ -164,12 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6F2D102019A63200A8E824 /* NSImage+ColorMask.m in Sources */,
 				0EF8BEE31FF621F700EF02D5 /* main.m in Sources */,
 				0EF8BED81FF621F700EF02D5 /* AppDelegate.m in Sources */,
 				0E4342492016CD03008125D1 /* Controller.m in Sources */,
 				0E4342542016D7B4008125D1 /* bugModel.m in Sources */,
 				0E43425820172A1F008125D1 /* LoginVC.m in Sources */,
 				0E4342502016D092008125D1 /* PopOverVC.m in Sources */,
+				0E4342BE20197037008125D1 /* ViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0EF8BEE71FF621F700EF02D5 /* Build configuration list for PBXNativeTarget "checkChanDao" */ = {
+		0EF8BEE71FF621F700EF02D5 /* Build configuration list for PBXNativeTarget "zentao" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EF8BEE81FF621F700EF02D5 /* Debug */,

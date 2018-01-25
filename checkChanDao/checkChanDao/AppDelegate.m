@@ -7,19 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-@property (nonatomic, strong, readwrite) Controller *controller;
-@end
+#import "Controller.h"
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    self.controller = [Controller startController];
-    [self.controller checkChanDao];
+    [[Controller shareController] start];
 }
-
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application

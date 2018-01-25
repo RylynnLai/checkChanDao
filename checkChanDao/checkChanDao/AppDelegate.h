@@ -7,11 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Controller.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
-@property (nonatomic, strong, readonly) Controller *controller;
 
 @end
 

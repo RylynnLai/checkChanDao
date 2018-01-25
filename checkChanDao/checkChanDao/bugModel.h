@@ -12,7 +12,4 @@
 @property (nonatomic, copy) NSString *bugID;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *bugDescription;
-
-+ (NSArray *)bugsModelWithHtmlString:(NSString *)htmlstring;
-
 @end

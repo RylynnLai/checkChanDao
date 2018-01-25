@@ -7,13 +7,12 @@
 //
 
 #import "LoginVC.h"
-#import "AppDelegate.h"
+#import "Controller.h"
 
 @interface LoginVC ()
 @property (weak) IBOutlet NSTextField *acountTF;
 @property (weak) IBOutlet NSTextField *pwdTF;
 
-@property (nonatomic, weak) AppDelegate *delegate;
 @end
 
 @implementation LoginVC
@@ -21,10 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    self.delegate = [NSApplication sharedApplication].delegate;
+    
 }
+
 - (IBAction)loginAction:(NSButton *)sender {
-    [self.delegate.controller loginWithAcount:self.acountTF.stringValue andPwd:self.pwdTF.stringValue completionHandler:^(bool isSucceed) {
+    [[Controller shareController] loginWithAcount:self.acountTF.stringValue andPwd:self.pwdTF.stringValue completionHandler:^(bool isSucceed) {
         if (isSucceed) {
             [self dismissViewController:self];
         }
