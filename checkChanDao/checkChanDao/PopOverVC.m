@@ -67,7 +67,7 @@
         }
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(isLogin))]) {
         if ([Controller shareController].viewModel.isLogin) {
-            [self.loginBtn setTitle:@"退出登录"];
+            [self.loginBtn setTitle:@"注销"];
         } else {
             [self.loginBtn setTitle:@"去登录"];
         }
