@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSButton *loginBtn;
 
 @property (nonatomic, strong) NSImageView *emptyView;
+@property (nonatomic, strong) NSProgressIndicator *indicator;
 @end
 
 @implementation PopOverVC
@@ -26,6 +27,8 @@
     [[Controller shareController].viewModel addObserver:self forKeyPath:NSStringFromSelector(@selector(bugs)) options:NSKeyValueObservingOptionNew context:nil];
     [[Controller shareController].viewModel addObserver:self forKeyPath:NSStringFromSelector(@selector(user)) options:NSKeyValueObservingOptionNew context:nil];
     [[Controller shareController].viewModel addObserver:self forKeyPath:NSStringFromSelector(@selector(isLogin)) options:NSKeyValueObservingOptionNew context:nil];
+    [[Controller shareController] addObserver:self forKeyPath:NSStringFromSelector(@selector(isRequesting)) options:NSKeyValueObservingOptionNew context:nil];
+    [self.view addSubview:self.indicator];
 }
 
 - (void)viewWillAppear
@@ -71,6 +74,8 @@
         } else {
             [self.loginBtn setTitle:@"去登录"];
         }
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(isRequesting))]) {
+        self.indicator.hidden = ![Controller shareController].isRequesting;
     }
 }
 
@@ -83,7 +88,15 @@
     }
     return _emptyView;
 }
-
+- (NSProgressIndicator *)indicator
+{
+    if (!_indicator) {
+        _indicator = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(self.view.bounds.size.width / 2 - 10, self.view.bounds.size.height - 25, 20, 20)];
+        [_indicator setStyle:NSProgressIndicatorStyleSpinning];
+        [_indicator startAnimation:nil];
+    }
+    return _indicator;
+}
 - (void)dealloc
 {
     [[Controller shareController].viewModel removeObserver:self forKeyPath:NSStringFromSelector(@selector(bugs))];

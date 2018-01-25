@@ -11,7 +11,7 @@
 
 @interface Controller : NSObject
 @property (nonatomic, strong, readonly) ViewModel *viewModel;
-@property (nonatomic, assign, readonly) BOOL isResuesting;
+@property (nonatomic, assign, readonly) BOOL isRequesting;
 /**
  单例
 

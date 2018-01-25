@@ -21,7 +21,7 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
 @property (nonatomic, strong) NSPopover *popOverView;//弹窗
 
 @property (nonatomic, strong, readwrite) ViewModel *viewModel;
-@property (nonatomic, assign, readwrite) BOOL isResuesting;
+@property (nonatomic, assign, readwrite) BOOL isRequesting;
 @end
 
 @implementation Controller
@@ -105,13 +105,14 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
     loginRequest.HTTPBody = jsonData;
     loginRequest.HTTPMethod = @"POST";
     
-    self.isResuesting = YES;
+    self.isRequesting = YES;
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:loginRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         // 网络请求完成之后就会执行，NSURLSession自动实现多线程
         NSLog(@"当前线程：%@",[NSThread currentThread]);
-        self.isResuesting = NO;
-        if (data && (error == nil)) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.isRequesting = NO;
+            if (data && (error == nil)) {
+               
                 if (data.length < 200) {//登录成功，Cookie自动保存
                     [self saveCookies];
                     [self checkChanDao];
@@ -120,15 +121,14 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
                     [self.viewModel updateBugsWithHtmlString:nil];
                     !completion ? : completion(false);
                 }
-            });
-        } else {
-            // 网络访问失败
-            NSLog(@"error=%@",error);
-            dispatch_async(dispatch_get_main_queue(), ^{
+        
+            } else {
+                // 网络访问失败
+                NSLog(@"error=%@",error);
                 [self.viewModel updateBugsWithHtmlString:nil];
                 !completion ? : completion(false);
-            });
-        }
+            }
+        });
     }];
     // 每一个任务默认都是挂起的，需要调用 resume 方法
     [task resume];
@@ -145,11 +145,11 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
     NSMutableURLRequest *bugsRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:bugsURL]];
     
     bugsRequest.HTTPMethod = @"GET";
-    self.isResuesting = YES;
+    self.isRequesting = YES;
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:bugsRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"当前线程：%@",[NSThread currentThread]);
-        self.isResuesting = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.isRequesting = NO;
             [self.viewModel updateBugsWithHtmlString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
         });
     }];

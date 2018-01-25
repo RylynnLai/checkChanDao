@@ -19,8 +19,6 @@
 
 @property (nonatomic, strong, readonly) NSArray <bugModel *>*bugs;
 
-@property (nonatomic, assign, readonly) BOOL isRequesting;
-
 - (void)updateBugsWithHtmlString:(NSString *)htmlstring;
 
 @end
