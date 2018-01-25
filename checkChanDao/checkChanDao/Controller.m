@@ -63,6 +63,14 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
     [self.viewModel addObserver:self forKeyPath:NSStringFromSelector(@selector(hasNewBugs)) options:NSKeyValueObservingOptionNew context:nil];
     
     [self checkChanDao];
+    [self startTimer];
+}
+//定时扫描禅道
+- (void)startTimer
+{
+    [NSTimer scheduledTimerWithTimeInterval:300 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self checkChanDao];
+    }];
 }
 
 - (void)popOverView:(NSStatusBarButton *)btn
