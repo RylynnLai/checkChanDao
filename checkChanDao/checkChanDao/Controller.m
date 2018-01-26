@@ -22,6 +22,7 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
 
 @property (nonatomic, strong, readwrite) ViewModel *viewModel;
 @property (nonatomic, assign, readwrite) BOOL isRequesting;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation Controller
@@ -68,7 +69,7 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
 //定时扫描禅道
 - (void)startTimer
 {
-    [NSTimer scheduledTimerWithTimeInterval:300 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:300 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [self checkChanDao];
     }];
 }
@@ -136,12 +137,13 @@ static NSString *bugsURL = @"http://172.17.21.16/zentao/my-bug.html";
 
 - (void)logout
 {
+    [self.timer invalidate];
+    self.timer = nil;
     [self clearCookies];
 }
 
 - (void)checkChanDao
 {
-    bugsURL = [bugsURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSMutableURLRequest *bugsRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:bugsURL]];
     
     bugsRequest.HTTPMethod = @"GET";

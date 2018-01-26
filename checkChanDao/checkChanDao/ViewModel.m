@@ -97,13 +97,17 @@
 //根据正则表达式匹配字符串
 - (NSArray <NSString *>*)matchesInString:(NSString *)string withPattern:(NSString *)pattern
 {
-    NSRegularExpression *regExp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
-    NSArray <NSTextCheckingResult *>*arr = [regExp matchesInString:string options:NSMatchingReportProgress range:NSMakeRange(0, string.length)];
-    NSMutableArray *strs = [NSMutableArray array];
-    [arr enumerateObjectsUsingBlock:^(NSTextCheckingResult * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [strs addObject:[string substringWithRange:obj.range]];
-    }];
-    return strs;
+    if (string.length > 0) {
+        NSRegularExpression *regExp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
+        NSArray <NSTextCheckingResult *>*arr = [regExp matchesInString:string options:NSMatchingReportProgress range:NSMakeRange(0, string.length)];
+        NSMutableArray *strs = [NSMutableArray array];
+        [arr enumerateObjectsUsingBlock:^(NSTextCheckingResult * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [strs addObject:[string substringWithRange:obj.range]];
+        }];
+        return strs;
+    } else {
+        return @[];
+    }
 }
 
 //去除html标签

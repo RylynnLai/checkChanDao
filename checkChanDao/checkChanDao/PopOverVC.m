@@ -102,6 +102,7 @@
     [[Controller shareController].viewModel removeObserver:self forKeyPath:NSStringFromSelector(@selector(bugs))];
     [[Controller shareController].viewModel removeObserver:self forKeyPath:NSStringFromSelector(@selector(user))];
     [[Controller shareController].viewModel removeObserver:self forKeyPath:NSStringFromSelector(@selector(isLogin))];
+    [[Controller shareController] removeObserver:self forKeyPath:NSStringFromSelector(@selector(isRequesting))];
 }
 
 #pragma mark - NSTableViewDataSource
