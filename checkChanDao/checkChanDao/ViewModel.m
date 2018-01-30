@@ -17,8 +17,6 @@
 
 @property (nonatomic, strong, readwrite) NSArray <bugModel *>*bugs;
 
-@property (nonatomic, assign, readwrite) BOOL isRequesting;
-
 @end
 
 @implementation ViewModel
